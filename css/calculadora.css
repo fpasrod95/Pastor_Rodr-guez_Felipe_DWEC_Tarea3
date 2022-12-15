@@ -1,0 +1,78 @@
+*{
+    margin: 0px auto;
+    padding: 0px;
+}
+
+body{
+    background: skyblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.calculadora{
+    background: lightgray;
+    text-align: center;
+    width: 50%;
+    margin: 50px auto;
+    border: 2px solid black;
+    min-height: 500px;
+    /*padding: 20px;*/
+}
+
+.display{
+    background: black;
+    color: white;
+    width: 80%;
+    height: 100px;
+    font-size:80px ;
+    text-align: right;
+    margin: 20px auto;
+
+
+}
+
+
+.button {
+    width: 120px;
+    min-height: 120px;
+    border: 1px auto black solid;
+    background: white;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px ; 
+    cursor: pointer; 
+    margin: 10px auto ;
+  
+}
+
+.button2 {
+    width: 245px;
+
+}
+
+.operator {
+    background: blue;
+    color: white;
+}
+
+.signo{
+    background: orange;
+    color:black;
+}
+
+.igual{
+    background: green;
+    color: white;
+}
+
+.decimal{
+    background: black;
+    color: white;
+}
+
+.limpiar {
+    background: red;
+    color:white;
+}
+

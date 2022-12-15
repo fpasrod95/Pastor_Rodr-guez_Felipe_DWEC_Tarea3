@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/juego.css" media="screen" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="ordenador">
+            <h1 id="texto_ordenador">Ordenador Puntos: </h1>
+            <img id="imagen_ordenador">
+        </div>
+        <div class="resultado">
+            <h1 id="resultado">Resultado de la ronda</h1>
+        </div>
+        <div class="jugador">                
+            <img id="imagen_jugador">
+            <h1 id="texto_jugador">Jugador Puntos: </h1>
+        </div>
+        <div class="botones">
+            <button id="papel" ><img src="../imagenes/papel.png">piedra</button>
+            <button id="piedra" ><img src="../imagenes/piedra.png"></button>
+            <button id="tijeras" ><img src="../imagenes/tijeras.png"></button>
+        </div>
+        
+    </div>
+
+    <button id="inicializar">Inicializar</button>
+
+    <script src="../scripts/juego_con_Interfaz/jugador.js"></script>
+    <script src="../scripts/juego_con_Interfaz/juego.js"></script>
+    <script src="../scripts/juego_con_Interfaz/index.js"></script>
+
+</body>
+
+</html>
