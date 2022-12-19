@@ -1,7 +1,7 @@
 class Jugador{
     constructor(name){
         this.name=name;
-        this.victorias=0;
+        this.victorias=2;
         this.derrotas=0;
         this.respuesta="";
     }
@@ -30,6 +30,10 @@ class Jugador{
 
     obtenerNombre(){
         return this.name;
+    }
+
+    mostrarDatos(datos){
+        datos+=datos.toString()+"JUGADOR";
     }
 
     

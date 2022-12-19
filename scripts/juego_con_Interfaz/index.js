@@ -3,6 +3,8 @@ const botonPapel=document.getElementById('papel');
 const botonTijeras=document.getElementById('tijeras');
 const botonInicializar=document.getElementById('inicializar');
 var resultado=document.getElementById('resultado');
+var texto_jugador=document.getElementById('texto_jugador');
+var texto_ordenador=document.getElementById('texto_ordenador');
 
 var juego= new Juego();
 var jugador=new Jugador("Jugador");
@@ -15,6 +17,7 @@ botonPiedra.addEventListener('click' , () => {
     ordenador.introducirRespuesta(ordenador.obtenerNombre(),botonPiedra.name);
     console.log(ordenador.obtenerNombre())
     console.log(ordenador.obtenerRespuesta());
+    jugador.mostrarDatos(texto_jugador.innerHTML);
 })
 
 botonPapel.addEventListener('click' , () => {
