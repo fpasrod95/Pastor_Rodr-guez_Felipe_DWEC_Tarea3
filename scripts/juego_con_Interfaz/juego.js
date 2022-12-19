@@ -1,3 +1,4 @@
+//import { Jugador } from '../juego_con_Interfaz/jugador.js'
 class Juego{
     constructor(){
         this.ronda = 1;

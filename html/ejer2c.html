@@ -1,3 +1,17 @@
+<!--
+Ejercicio 3. Juego Piedra, Papel y Tijeras .
+Piedra, Papel y Tijeras es un juego de manos para dos personas. Ambos jugadores deben decir “piedra, papel, tijeras” 
+y simultáneamente formar uno de los tres objetos (piedra, papel o tijeras) con una mano extendida. 
+El ganador se determina por las formaciones de las manos. Las tijeras le ganan al papel, el papel le gana a la piedra,
+y la piedra le gana a las tijeras. Si ambos jugadores presentan la misma formación de manos, se considera un empate. 
+Escribiremos una aplicación javascript que simule el juego en el que un jugador es el usuario y el otro es el ordenador.
+
+El rival a batir será el ordenador.
+Se mostrará en cada partida quién es el ganador (Ordenador o Jugador) así como las puntuaciones de cada jugador.
+Se jugará hasta que uno de los participantes alcance 5 puntos (5 victorias), momento en el que se preguntará 
+al usuario si desea jugar otra partida. o bien salir del juego.
+Mediante el botón Inicializar, el usuario podrá dar por finalizada la partida actual e iniciar una nueva.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +37,7 @@
             <h1 id="texto_jugador">Jugador Puntos: </h1>
         </div>
         <div class="botones">
-            <button id="papel" ><img src="../imagenes/papel.png">piedra</button>
+            <button id="papel" ><img src="../imagenes/papel.png"></button>
             <button id="piedra" ><img src="../imagenes/piedra.png"></button>
             <button id="tijeras" ><img src="../imagenes/tijeras.png"></button>
         </div>
