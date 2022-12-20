@@ -15,111 +15,95 @@ al usuario si desea jugar otra partida. o bien salir del juego.
 Mediante el botón Inicializar, el usuario podrá dar por finalizada la partida actual e iniciar una nueva.
 */
 
-const botonPiedra=document.getElementById('piedra');
-const botonPapel=document.getElementById('papel');
-const botonTijeras=document.getElementById('tijeras');
-const botonInicializar=document.getElementById('inicializar');
-var imagen_ordenador=document.getElementById('imagen_ordenador');
-var imagen_jugador=document.getElementById('imagen_jugador');
-var resultado=document.getElementById('resultado');
-var texto_jugador=document.getElementById('texto_jugador');
-var texto_ordenador=document.getElementById('texto_ordenador');
+//-------------------------VARIABLES DE ELEMENTOS DEL DOM-------------------------
 
-//-------------------------CREANDO JUGADORES EN INDEX-------------------------
+const botonPiedra = document.getElementById('piedra');
+const botonPapel = document.getElementById('papel');
+const botonTijeras = document.getElementById('tijeras');
+const botonInicializar = document.getElementById('inicializar');
+var imagen_ordenador = document.getElementById('imagen_ordenador');
+var imagen_jugador = document.getElementById('imagen_jugador');
+var resultado = document.getElementById('resultado');
+var texto_jugador = document.getElementById('texto_jugador');
+var texto_ordenador = document.getElementById('texto_ordenador');
 
-var juego= new Juego2();
+//-------------------------CREACION JUEGO Y VARIABLES DE "REFERENCIA"-------------------------
+
+var juego = new Juego2();
 
 //Usamos dos variables que simplemente referencien a la propiedad "jugador" y "ordenador", 2 objetos definidos en la clase "Juego2"
-var jugador= juego.obtenerJugador();
-var ordenador= juego.obtenerOrdenador();
-texto_jugador.innerHTML+=jugador.obtenerVictorias();
-texto_ordenador.innerHTML+=ordenador.obtenerVictorias();
+var jugador = juego.obtenerJugador();
+var ordenador = juego.obtenerOrdenador();
+texto_jugador.innerHTML += jugador.obtenerVictorias();
+texto_ordenador.innerHTML += ordenador.obtenerVictorias();
 
-botonPiedra.addEventListener('click' , () => {
-    //jugador.introducirRespuesta(jugador.obtenerNombre(),botonPiedra.id.toString());
-    jugador.introducirRespuesta(jugador.obtenerNombre(),botonPiedra.id.toString());
-    imagen_jugador.src="../imagenes/piedra.png";
+//-------------------------FUNCIONALIDAD DE LOS BOTONES-------------------------
+
+botonPiedra.addEventListener('click', () => {
+    //Obtener respuesta del jugador y la imagen asociada
+    jugador.introducirRespuesta(jugador.obtenerNombre(), botonPiedra.id.toString());
+    imagen_jugador.src = "../imagenes/piedra.png";
     //logs
     console.log(jugador.obtenerNombre());
     console.log(jugador.obtenerRespuesta());
     console.log("");
+    //Obtener la respuesta del ordenador y su imagen 
     ordenador.introducirRespuesta(ordenador.obtenerNombre());
-
-    if(ordenador.obtenerRespuesta()=="piedra"){
-        imagen_ordenador.src="../imagenes/piedra.png";
-    }
-
-    if(ordenador.obtenerRespuesta()=="papel"){
-        imagen_ordenador.src="../imagenes/papel.png";
-    }
-
-    if(ordenador.obtenerRespuesta()=="tijeras"){
-        imagen_ordenador.src="../imagenes/tijeras.png";
-    }
-    juego.obtenerResultadoRonda(resultado,texto_jugador,texto_ordenador);
+    juego.elegirImagenOrdenador(imagen_ordenador);
+    //Actualizar resultado de la ronda y puntuaciones
+    juego.obtenerResultadoRonda(resultado, texto_jugador, texto_ordenador);
     //logs
     console.log(ordenador.obtenerNombre())
     console.log(ordenador.obtenerRespuesta());
     console.log("");
-    //jugador.mostrarDatos(texto_jugador.innerHTML);
+    //Comprueba quién ha ganado el juego (5 victorias )
+    juego.comprobarGanador(resultado);
 })
 
-botonPapel.addEventListener('click' , () => {
-    jugador.introducirRespuesta(jugador.obtenerNombre(),botonPapel.id.toString());
-    imagen_jugador.src="../imagenes/papel.png";
-
+botonPapel.addEventListener('click', () => {
+    //Obtener respuesta del jugador y la imagen asociada
+    jugador.introducirRespuesta(jugador.obtenerNombre(), botonPiedra.id.toString());
+    imagen_jugador.src = "../imagenes/papel.png";
     //logs
     console.log(jugador.obtenerNombre());
     console.log(jugador.obtenerRespuesta());
     console.log("");
-
-    ordenador.introducirRespuesta(ordenador.obtenerNombre(),botonPapel.name);
-
-    if(ordenador.obtenerRespuesta()=="piedra"){
-        imagen_ordenador.src="../imagenes/piedra.png";
-    }
-
-    if(ordenador.obtenerRespuesta()=="papel"){
-        imagen_ordenador.src="../imagenes/papel.png";
-    }
-
-    if(ordenador.obtenerRespuesta()=="tijeras"){
-        imagen_ordenador.src="../imagenes/tijeras.png";
-    }
+    //Obtener la respuesta del ordenador y su imagen 
+    ordenador.introducirRespuesta(ordenador.obtenerNombre());
+    juego.elegirImagenOrdenador(imagen_ordenador);
+    //Actualizar resultado de la ronda y puntuaciones
+    juego.obtenerResultadoRonda(resultado, texto_jugador, texto_ordenador);
     //logs
     console.log(ordenador.obtenerNombre())
     console.log(ordenador.obtenerRespuesta());
     console.log("");
+    //Comprueba quién ha ganado el juego (5 victorias )
+    juego.comprobarGanador(resultado);
 })
 
-botonTijeras.addEventListener('click' , () => {
-    jugador.introducirRespuesta(jugador.obtenerNombre(),botonTijeras.id.toString());
-    imagen_jugador.src="../imagenes/tijeras.png";
+botonTijeras.addEventListener('click', () => {
+    //Obtener respuesta del jugador y la imagen asociada
+    jugador.introducirRespuesta(jugador.obtenerNombre(), botonPiedra.id.toString());
+    imagen_jugador.src = "../imagenes/tijeras.png";
     //logs
     console.log(jugador.obtenerNombre());
     console.log(jugador.obtenerRespuesta());
     console.log("");
-
-    ordenador.introducirRespuesta(ordenador.obtenerNombre(),botonTijeras.name);
-    if(ordenador.obtenerRespuesta()=="piedra"){
-        imagen_ordenador.src="../imagenes/piedra.png";
-    }
-
-    if(ordenador.obtenerRespuesta()=="papel"){
-        imagen_ordenador.src="../imagenes/papel.png";
-    }
-
-    if(ordenador.obtenerRespuesta()=="tijeras"){
-        imagen_ordenador.src="../imagenes/tijeras.png";
-    }
+    //Obtener la respuesta del ordenador y su imagen 
+    ordenador.introducirRespuesta(ordenador.obtenerNombre());
+    juego.elegirImagenOrdenador(imagen_ordenador);
+    //Actualizar resultado de la ronda y puntuaciones
+    juego.obtenerResultadoRonda(resultado, texto_jugador, texto_ordenador);
     //logs
     console.log(ordenador.obtenerNombre())
     console.log(ordenador.obtenerRespuesta());
     console.log("");
+    //Comprueba quién ha ganado el juego (5 victorias )
+    juego.comprobarGanador(resultado);
 })
 
-botonInicializar.addEventListener('click' , () => {
-    
+botonInicializar.addEventListener('click', () => {
+
 })
 
 

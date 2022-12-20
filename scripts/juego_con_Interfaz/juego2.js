@@ -8,91 +8,133 @@ export class Juego2 {
         this.ordenador = new Jugador2("Ordenador");
     }
 
+//-------------------------GETTERS Y SETTERS (POR DEFECTO)-------------------------
+
+    get ronda(){
+        return this._ronda;
+    }
+
+    set ronda(valor){
+        this._ronda=valor;
+    }
+
+    get partida(){
+        return this._partida;
+    }
+
+    set partida(valor){
+        this._partida=valor;
+    }
+
+    get jugador(){
+        return this._jugador;
+    }
+
+    set jugador(nuevo){
+        this._jugador=nuevo;
+    }
+
+    get ordenador(){
+        return this._ordenador;
+    }
+
+    set ordenador(nuevo){
+        this._ordenador=nuevo;
+    }
+
+//-------------------------MÉTODOS-------------------------
+    // Recoge los resultados de la ronda
+    obtenerResultadoRonda(resultado, texto_jugador, texto_ordenador) {
+        if (this.jugador.obtenerRespuesta() == "piedra") {
+            if (this.ordenador.obtenerRespuesta() == "papel") {
+                this.RondaDerrota(resultado, texto_jugador, texto_ordenador);
+            } else if (this.ordenador.obtenerRespuesta() == "tijeras") {
+                this.RondaVictoria(resultado, texto_jugador, texto_ordenador);
+            } else {
+                //Estos "else" hacen referencia a que haya un empate
+                this.RondaEmpate(resultado, texto_jugador, texto_ordenador);
+            }
+        } else if (this.jugador.obtenerRespuesta() == "papel") {
+            if (this.ordenador.obtenerRespuesta() == "tijeras") {
+                this.RondaDerrota(resultado, texto_jugador, texto_ordenador);
+            } else if (this.ordenador.obtenerRespuesta() == "piedra") {
+                this.RondaVictoria(resultado, texto_jugador, texto_ordenador);
+            } else {
+                this.RondaEmpate(resultado, texto_jugador, texto_ordenador);
+            }
+        } else if (this.jugador.obtenerRespuesta() == "tijeras") {
+            if (this.ordenador.obtenerRespuesta() == "piedra") {
+                this.RondaDerrota(resultado, texto_jugador, texto_ordenador);
+            } else if (this.ordenador.obtenerRespuesta() == "papel") {
+                this.RondaVictoria(resultado, texto_jugador, texto_ordenador);
+            } else {
+                this.RondaEmpate(resultado, texto_jugador, texto_ordenador);
+            }
+        }
+    }
+    
+    RondaEmpate(resultado, texto_jugador, texto_ordenador) {
+        this.ronda++;
+        resultado.innerHTML = "Ha habido un empate!";
+        this.actualizarPuntuaciones(texto_jugador, texto_ordenador);
+    }
+
+    RondaDerrota(resultado, texto_jugador, texto_ordenador) {
+        this.ronda++;
+        this.jugador.nuevaDerrota();
+        this.ordenador.nuevaVictoria();
+        resultado.innerHTML = "El Ordenador ha ganado la ronda!";
+        this.actualizarPuntuaciones(texto_jugador, texto_ordenador);
+    }
+
+    RondaVictoria(resultado, texto_jugador, texto_ordenador) {
+        this.ronda++;
+        this.jugador.nuevaVictoria();
+        this.ordenador.nuevaDerrota();
+        resultado.innerHTML = "El jugador ha ganado la ronda!";
+        this.actualizarPuntuaciones(texto_jugador, texto_ordenador);
+    }
+    // Actualiza las puntuaciones de jugador y ordenador
+    actualizarPuntuaciones(texto_jugador, texto_ordenador) {
+        texto_jugador.innerHTML = this.jugador.obtenerVictorias();
+        texto_ordenador.innerHTML = this.ordenador.obtenerVictorias();
+    }
+    // Cambia entre las 3 imágenes disponibles dependiendo de la respuesta de Ordenador
+    elegirImagenOrdenador(imagen_ordenador) {
+
+        if (this.ordenador.obtenerRespuesta() == "piedra") {
+            imagen_ordenador.src = "../imagenes/piedra.png";
+        }
+
+        if (this.ordenador.obtenerRespuesta() == "papel") {
+            imagen_ordenador.src = "../imagenes/papel.png";
+        }
+
+        if (this.ordenador.obtenerRespuesta() == "tijeras") {
+            imagen_ordenador.src = "../imagenes/tijeras.png";
+        }
+
+    }
+
+    comprobarGanador(resultado) {
+        if (this.jugador.victorias == 5) {
+            resultado.innerHTML = "El Jugador ha ganado la partida!";
+        }
+
+        if (this.ordenador.victorias == 5) {
+            resultado.innerHTML = "El Ordenador ha ganado la partida!";
+        }
+    }
+
+//-------------------------GETTERS Y SETTERS "PROPIOS"-------------------------
+    // La diferencia con los getter y setters es que estos son métodos llamados, mientras get() y set() ya están creados y 
+    // acceden a la propiedad sin la necesidad de llamarlos (evitando el uso de paréntesis "()" )
     obtenerJugador() {
         return this.jugador;
     }
 
     obtenerOrdenador() {
         return this.ordenador;
-    }
-
-    obtenerResultadoRonda(resultado,texto_jugador,texto_ordenador) {
-        if (this.jugador.obtenerRespuesta() == "piedra") {
-            if (this.ordenador.obtenerRespuesta() == "papel") {
-                this.RondaDerrota(resultado,texto_jugador,texto_ordenador);
-            } else if (this.ordenador.obtenerRespuesta() == "tijeras") {
-                this.RondaVictoria(resultado,texto_jugador,texto_ordenador);
-            } else {
-                //Estos "else" hacen referencia a que haya un empate
-                this.RondaEmpate(resultado,texto_jugador,texto_ordenador);
-            }
-        } else if (this.jugador.obtenerRespuesta() == "papel") {
-            if (this.ordenador.obtenerRespuesta() == "tijeras") {
-                this.RondaDerrota(resultado,texto_jugador,texto_ordenador);
-            } else if (this.ordenador.obtenerRespuesta() == "piedra") {
-                this.RondaVictoria(resultado,texto_jugador,texto_ordenador);
-            } else {
-                this.RondaEmpate(resultado,texto_jugador,texto_ordenador);
-            }
-        } else if (this.jugador.obtenerRespuesta() == "tijeras") {
-            if (this.ordenador.obtenerRespuesta() == "piedra") {
-                this.RondaDerrota(resultado,texto_jugador,texto_ordenador);
-            } else if (this.ordenador.obtenerRespuesta() == "papel") {
-                this.RondaVictoria(resultado,texto_jugador,texto_ordenador);
-            } else {
-                this.RondaEmpate(resultado,texto_jugador,texto_ordenador);
-            }
-        }
-    }
-
-    RondaEmpate(resultado,texto_jugador,texto_ordenador) {
-        this.ronda++;
-
-        resultado.innerHTML="Ha habido un empate!";
-
-        // console.log(`El jugador ha sacado ${jugador.respuesta} y el ordenador ${ordenador.respuesta}`);
-        // console.log("Ha habido un empate esta ronda");
-        // console.log(`Victorias del jugador : ${victorias_jugador}`);
-        // console.log(`Victorias del ordenador : ${victorias_ordenador}`);
-        // console.log('');
-        this.actualizarPuntuaciones(texto_jugador,texto_ordenador);
-
-
-    }
-
-    RondaDerrota(resultado,texto_jugador,texto_ordenador) {
-        this.ronda++;
-        this.jugador.nuevaDerrota();
-        this.ordenador.nuevaVictoria();
-
-        resultado.innerHTML="El Ordenador ha ganado la ronda!";
-        this.actualizarPuntuaciones(texto_jugador,texto_ordenador);
-
-        // console.log(`El jugador ha sacado ${jugador.respuesta} y el ordenador ${ordenador.respuesta}`);
-        // console.log("Has perdido esta ronda");
-        // console.log(`Victorias del jugador : ${victorias_jugador}`);
-        // console.log(`Victorias del ordenador : ${victorias_ordenador}`);
-        // console.log('');
-    }
-
-    RondaVictoria(resultado,texto_jugador,texto_ordenador) {
-        this.ronda++;
-        this.jugador.nuevaVictoria();
-        this.ordenador.nuevaDerrota();
-
-        resultado.innerHTML="El jugador ha ganado la ronda!";
-        this.actualizarPuntuaciones(texto_jugador,texto_ordenador);
-
-        // console.log(`El jugador ha sacado ${jugador.respuesta} y el ordenador ${ordenador.respuesta}`);
-        // console.log("Has ganado esta ronda");
-        // console.log(`Victorias del jugador : ${victorias_jugador}`);
-        // console.log(`Victorias del ordenador : ${victorias_ordenador}`);
-        // console.log('');
-    }
-
-    actualizarPuntuaciones(texto_jugador,texto_ordenador){
-        texto_jugador.innerHTML=this.jugador.obtenerVictorias();
-        texto_ordenador.innerHTML=this.ordenador.obtenerVictorias();
     }
 }
 
