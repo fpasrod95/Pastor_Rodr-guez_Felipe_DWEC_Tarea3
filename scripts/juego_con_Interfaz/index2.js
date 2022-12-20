@@ -26,15 +26,14 @@ var texto_ordenador=document.getElementById('texto_ordenador');
 //-------------------------CREANDO JUGADORES EN INDEX-------------------------
 
 var juego= new Juego();
-var jugador=new Jugador("Jugador");
-var ordenador= new Jugador("Ordenador");
 
 botonPiedra.addEventListener('click' , () => {
-    jugador.introducirRespuesta(jugador.obtenerNombre(),botonPiedra.id.toString());
+    //jugador.introducirRespuesta(jugador.obtenerNombre(),botonPiedra.id.toString());
+    juego.jugador.introducirRespuesta(juego.jugador.obtenerNombre(),botonPiedra.id.toString());
     imagen_jugador.src="../imagenes/piedra.png";
     
-    console.log(jugador.obtenerNombre());
-    console.log(jugador.obtenerRespuesta());
+    console.log(juego.jugador.obtenerNombre());
+    console.log(juego.jugador.obtenerRespuesta());
     console.log("");
     ordenador.introducirRespuesta(ordenador.obtenerNombre());
 
