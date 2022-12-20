@@ -60,5 +60,13 @@ button > img{
     display:inline-block;
 }
 
+#texto_ordenador{
+    vertical-align: baseline;
+}
+
+h1{
+    float:center;
+}
+
 
 

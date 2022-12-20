@@ -1,3 +1,5 @@
+import { Juego2 } from './juego2.js'
+
 /*
 Ejercicio 3. Juego Piedra, Papel y Tijeras .
 Piedra, Papel y Tijeras es un juego de manos para dos personas. Ambos jugadores deben decir “piedra, papel, tijeras” 
@@ -25,15 +27,21 @@ var texto_ordenador=document.getElementById('texto_ordenador');
 
 //-------------------------CREANDO JUGADORES EN INDEX-------------------------
 
-var juego= new Juego();
+var juego= new Juego2();
+
+//Usamos dos variables que simplemente referencien a la propiedad "jugador" y "ordenador", 2 objetos definidos en la clase "Juego2"
+var jugador= juego.obtenerJugador();
+var ordenador= juego.obtenerOrdenador();
+texto_jugador.innerHTML+=jugador.obtenerVictorias();
+texto_ordenador.innerHTML+=ordenador.obtenerVictorias();
 
 botonPiedra.addEventListener('click' , () => {
     //jugador.introducirRespuesta(jugador.obtenerNombre(),botonPiedra.id.toString());
-    juego.jugador.introducirRespuesta(juego.jugador.obtenerNombre(),botonPiedra.id.toString());
+    jugador.introducirRespuesta(jugador.obtenerNombre(),botonPiedra.id.toString());
     imagen_jugador.src="../imagenes/piedra.png";
-    
-    console.log(juego.jugador.obtenerNombre());
-    console.log(juego.jugador.obtenerRespuesta());
+    //logs
+    console.log(jugador.obtenerNombre());
+    console.log(jugador.obtenerRespuesta());
     console.log("");
     ordenador.introducirRespuesta(ordenador.obtenerNombre());
 
@@ -45,10 +53,11 @@ botonPiedra.addEventListener('click' , () => {
         imagen_ordenador.src="../imagenes/papel.png";
     }
 
-    if(ordenador.obtenerRespuesta()=="piedra"){
+    if(ordenador.obtenerRespuesta()=="tijeras"){
         imagen_ordenador.src="../imagenes/tijeras.png";
     }
-
+    juego.obtenerResultadoRonda(resultado,texto_jugador,texto_ordenador);
+    //logs
     console.log(ordenador.obtenerNombre())
     console.log(ordenador.obtenerRespuesta());
     console.log("");
@@ -58,9 +67,14 @@ botonPiedra.addEventListener('click' , () => {
 botonPapel.addEventListener('click' , () => {
     jugador.introducirRespuesta(jugador.obtenerNombre(),botonPapel.id.toString());
     imagen_jugador.src="../imagenes/papel.png";
+
+    //logs
     console.log(jugador.obtenerNombre());
     console.log(jugador.obtenerRespuesta());
+    console.log("");
+
     ordenador.introducirRespuesta(ordenador.obtenerNombre(),botonPapel.name);
+
     if(ordenador.obtenerRespuesta()=="piedra"){
         imagen_ordenador.src="../imagenes/piedra.png";
     }
@@ -72,15 +86,20 @@ botonPapel.addEventListener('click' , () => {
     if(ordenador.obtenerRespuesta()=="tijeras"){
         imagen_ordenador.src="../imagenes/tijeras.png";
     }
+    //logs
     console.log(ordenador.obtenerNombre())
     console.log(ordenador.obtenerRespuesta());
+    console.log("");
 })
 
 botonTijeras.addEventListener('click' , () => {
     jugador.introducirRespuesta(jugador.obtenerNombre(),botonTijeras.id.toString());
     imagen_jugador.src="../imagenes/tijeras.png";
+    //logs
     console.log(jugador.obtenerNombre());
     console.log(jugador.obtenerRespuesta());
+    console.log("");
+
     ordenador.introducirRespuesta(ordenador.obtenerNombre(),botonTijeras.name);
     if(ordenador.obtenerRespuesta()=="piedra"){
         imagen_ordenador.src="../imagenes/piedra.png";
@@ -93,8 +112,10 @@ botonTijeras.addEventListener('click' , () => {
     if(ordenador.obtenerRespuesta()=="tijeras"){
         imagen_ordenador.src="../imagenes/tijeras.png";
     }
+    //logs
     console.log(ordenador.obtenerNombre())
     console.log(ordenador.obtenerRespuesta());
+    console.log("");
 })
 
 botonInicializar.addEventListener('click' , () => {

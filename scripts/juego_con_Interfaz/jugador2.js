@@ -1,17 +1,17 @@
-export class Jugador{
-    constructor(name){
-        this.name=name;
-        this.victorias=2;
-        this.derrotas=0;
-        this.respuesta="";
+export class Jugador2 {
+    constructor(name) {
+        this.name = name;
+        this.victorias = 0;
+        this.derrotas = 0;
+        this.respuesta = "";
     }
 
-    introducirRespuesta(nombre,resp){
-        if (nombre=="Jugador"){
-            this.respuesta=resp;
+    introducirRespuesta(nombre, resp) {
+        if (nombre == "Jugador") {
+            this.respuesta = resp;
         }
 
-        if (nombre=="Ordenador"){
+        if (nombre == "Ordenador") {
             var aleatoria = Math.floor(Math.random() * 3);
             if (aleatoria == 0) {
                 this.respuesta = "piedra";
@@ -21,20 +21,29 @@ export class Jugador{
                 this.respuesta = "tijeras";
             }
         }
-        
+
     }
 
-    obtenerRespuesta(){
+    obtenerRespuesta() {
         return this.respuesta;
     }
 
-    obtenerNombre(){
+    obtenerNombre() {
         return this.name;
     }
 
-    mostrarDatos(datos){
-        datos+=datos.toString()+"JUGADOR";
+    obtenerVictorias(){
+        return this.victorias;
     }
+
+    nuevaDerrota() {
+        this.derrotas++;
+    }
+
+    nuevaVictoria() {
+        this.victorias++;
+    }
+
 
 
 
@@ -105,14 +114,6 @@ export class Jugador{
 //         console.log(`Victorias: ${this.victorias}`);
 //         console.log(`Derrotas: ${this.derrotas}`);
 //         console.log('');
-//     }
-
-//     nuevaDerrota(){
-//         this.derrotas++;
-//     }
-
-//     nuevaVictoria(){
-//         this.victorias++;
 //     }
 
 
