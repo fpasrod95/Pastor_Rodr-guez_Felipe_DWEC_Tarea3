@@ -6,7 +6,7 @@
 
 .container{
     width: calc(60% - 20px);
-    min-height: 400px;
+    min-height: 500px;
     padding: 10px;
     background: skyblue;
     margin: 20px auto;
@@ -35,8 +35,8 @@
 .resultado{
     background: black;
     color: white;
-    min-height: 100px;
-    font-size: 20px;
+    min-height: 50px;
+    font-size: 16px;
 }
 
 #resultado{

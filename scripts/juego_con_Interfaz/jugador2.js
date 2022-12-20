@@ -6,6 +6,42 @@ export class Jugador2 {
         this.respuesta = "";
     }
 
+//---------------------------------GETTERS Y SETTERS (POR DEFECTO)---------------------------------
+
+    get name() {
+        return this._name;
+    }
+
+    set name(valor) {
+        this._name = valor;
+    }
+
+    get victorias() {
+        return this._victorias;
+    }
+
+    set victorias(valor) {
+        this._victorias = valor;
+    }
+
+    get derrotas() {
+        return this._derrotas;
+    }
+
+    set derrotas(valor) {
+        this._derrotas = valor;
+    }
+
+    get respuesta(){
+        return this._respuesta;
+    }
+
+    set respuesta(valor){
+        this._respuesta=valor;
+    }
+
+//---------------------------------MÉTODOS---------------------------------
+
     introducirRespuesta(nombre, resp) {
         if (nombre == "Jugador") {
             this.respuesta = resp;
@@ -24,6 +60,8 @@ export class Jugador2 {
 
     }
 
+//---------------------------------GETTERS Y SETTERS "PROPIOS"---------------------------------
+
     obtenerRespuesta() {
         return this.respuesta;
     }
@@ -32,7 +70,7 @@ export class Jugador2 {
         return this.name;
     }
 
-    obtenerVictorias(){
+    obtenerVictorias() {
         return this.victorias;
     }
 
@@ -44,80 +82,4 @@ export class Jugador2 {
         this.victorias++;
     }
 
-
-
-
 }
-
-// class Jugador {
-//     constructor(name) {
-//         this.name = name;
-//         this.victorias = 0;
-//         this.derrotas = 0;
-//         this.respuesta = "";
-//     }
-
-//     introducirRespuesta(name) {
-//         if (name == "Jugador") {
-//             do {
-//                 this.respuesta = prompt("Introduzca su respuesta ( piedra / papel / tijeras ) :");
-
-//                 if (this.respuesta.toLowerCase() != "piedra" && this.respuesta.toLowerCase() != "papel" && this.respuesta.toLowerCase() != "tijeras") {
-//                     alert("Por favor, introduzca una de las opciones requeridas");
-//                 }
-
-//             } while (this.respuesta.toLowerCase() != "piedra" && this.respuesta.toLowerCase() != "papel" && this.respuesta.toLowerCase() != "tijeras")
-//         }
-//         if (name = "Ordenador") {
-//             var aleatoria = Math.floor(Math.random() * 3);
-//             if (aleatoria == 0) {
-
-//                 this.respuesta = "piedra";
-
-//             } else if (aleatoria == 1) {
-
-//                 this.respuesta = "papel";
-
-//             } else {
-//                 this.respuesta = "tijeras";
-//             }
-//         }
-
-//     }
-
-//     get name(){
-//         return this.name;
-//     }
-
-//     get victorias(){
-//         return this.victorias;
-//     }
-
-//     get derrotas(){
-//         return this.derrotas;
-//     }
-
-//     get respuesta(){
-//         return this.respuesta;
-//     }
-
-//     set victorias(valor){
-//         this.victorias=valor;
-//     }
-
-//     set derrotas(valor){
-//         this.derrotas=valor;
-//     }
-
-//     mostrarDatosJugador(){
-//         console.log(`Datos del ${this.name}: `);
-//         console.log(`Victorias: ${this.victorias}`);
-//         console.log(`Derrotas: ${this.derrotas}`);
-//         console.log('');
-//     }
-
-
-
-
-// }
-
